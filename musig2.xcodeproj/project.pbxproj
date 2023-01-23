@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67DADD5F297F04F40099BE08 /* hmac_sha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD39297F04F40099BE08 /* hmac_sha256.cpp */; };
+		67DADD60297F04F40099BE08 /* sha512.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD3C297F04F40099BE08 /* sha512.cpp */; };
+		67DADD61297F04F40099BE08 /* hmac_sha512.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD3F297F04F40099BE08 /* hmac_sha512.cpp */; };
+		67DADD62297F04F40099BE08 /* sha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD41297F04F40099BE08 /* sha256.cpp */; };
+		67DADD63297F04F40099BE08 /* chacha20.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD43297F04F40099BE08 /* chacha20.cpp */; };
+		67DADD64297F04F40099BE08 /* ripemd160.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD44297F04F40099BE08 /* ripemd160.cpp */; };
+		67DADD65297F04F40099BE08 /* muhash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD45297F04F40099BE08 /* muhash.cpp */; };
+		67DADD66297F04F40099BE08 /* stdin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD4A297F04F40099BE08 /* stdin.cpp */; };
+		67DADD67297F04F40099BE08 /* spanparsing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD50297F04F40099BE08 /* spanparsing.cpp */; };
+		67DADD68297F04F40099BE08 /* string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD51297F04F40099BE08 /* string.cpp */; };
+		67DADD69297F04F40099BE08 /* strencodings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD52297F04F40099BE08 /* strencodings.cpp */; };
+		67DADD6A297F04F40099BE08 /* uint256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD59297F04F40099BE08 /* uint256.cpp */; };
+		67DADD6B297F04F40099BE08 /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD5B297F04F40099BE08 /* hash.cpp */; };
+		67DADD6C297F04F40099BE08 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD5D297F04F40099BE08 /* main.cpp */; };
+		67E00140297F0A9A0093AD71 /* libsecp256k1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E0013D297F0A970093AD71 /* libsecp256k1.0.dylib */; };
+		67E00141297F0A9A0093AD71 /* libsecp256k1.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 67E0013D297F0A970093AD71 /* libsecp256k1.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		67E00143297F0A9A0093AD71 /* libsecp256k1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E0013C297F0A970093AD71 /* libsecp256k1.1.dylib */; };
+		67E00144297F0A9A0093AD71 /* libsecp256k1.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 67E0013C297F0A970093AD71 /* libsecp256k1.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		67E00145297F0A9A0093AD71 /* libsecp256k1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E0013B297F0A970093AD71 /* libsecp256k1.a */; };
+		67E00146297F0A9A0093AD71 /* libsecp256k1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E0013E297F0A970093AD71 /* libsecp256k1.dylib */; };
+		67E00147297F0A9A0093AD71 /* libsecp256k1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 67E0013E297F0A970093AD71 /* libsecp256k1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		67DADD29297F04900099BE08 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		67E00148297F0A9A0093AD71 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				67E00144297F0A9A0093AD71 /* libsecp256k1.1.dylib in Embed Libraries */,
+				67E00141297F0A9A0093AD71 /* libsecp256k1.0.dylib in Embed Libraries */,
+				67E00147297F0A9A0093AD71 /* libsecp256k1.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		67DADD37297F04F40099BE08 /* ripemd160.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ripemd160.h; sourceTree = "<group>"; };
+		67DADD38297F04F40099BE08 /* muhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = muhash.h; sourceTree = "<group>"; };
+		67DADD39297F04F40099BE08 /* hmac_sha256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hmac_sha256.cpp; sourceTree = "<group>"; };
+		67DADD3A297F04F40099BE08 /* hmac_sha512.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac_sha512.h; sourceTree = "<group>"; };
+		67DADD3B297F04F40099BE08 /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
+		67DADD3C297F04F40099BE08 /* sha512.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha512.cpp; sourceTree = "<group>"; };
+		67DADD3D297F04F40099BE08 /* hmac_sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac_sha256.h; sourceTree = "<group>"; };
+		67DADD3E297F04F40099BE08 /* sha512.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha512.h; sourceTree = "<group>"; };
+		67DADD3F297F04F40099BE08 /* hmac_sha512.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hmac_sha512.cpp; sourceTree = "<group>"; };
+		67DADD40297F04F40099BE08 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		67DADD41297F04F40099BE08 /* sha256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha256.cpp; sourceTree = "<group>"; };
+		67DADD42297F04F40099BE08 /* chacha20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chacha20.h; sourceTree = "<group>"; };
+		67DADD43297F04F40099BE08 /* chacha20.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chacha20.cpp; sourceTree = "<group>"; };
+		67DADD44297F04F40099BE08 /* ripemd160.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ripemd160.cpp; sourceTree = "<group>"; };
+		67DADD45297F04F40099BE08 /* muhash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = muhash.cpp; sourceTree = "<group>"; };
+		67DADD47297F04F40099BE08 /* stdin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdin.h; sourceTree = "<group>"; };
+		67DADD48297F04F40099BE08 /* cpuid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpuid.h; sourceTree = "<group>"; };
+		67DADD49297F04F40099BE08 /* endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = endian.h; sourceTree = "<group>"; };
+		67DADD4A297F04F40099BE08 /* stdin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdin.cpp; sourceTree = "<group>"; };
+		67DADD4B297F04F40099BE08 /* byteswap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = byteswap.h; sourceTree = "<group>"; };
+		67DADD4C297F04F40099BE08 /* compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compat.h; sourceTree = "<group>"; };
+		67DADD4D297F04F40099BE08 /* assumptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = assumptions.h; sourceTree = "<group>"; };
+		67DADD4E297F04F40099BE08 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		67DADD50297F04F40099BE08 /* spanparsing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spanparsing.cpp; sourceTree = "<group>"; };
+		67DADD51297F04F40099BE08 /* string.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string.cpp; sourceTree = "<group>"; };
+		67DADD52297F04F40099BE08 /* strencodings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strencodings.cpp; sourceTree = "<group>"; };
+		67DADD53297F04F40099BE08 /* strencodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strencodings.h; sourceTree = "<group>"; };
+		67DADD54297F04F40099BE08 /* spanparsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spanparsing.h; sourceTree = "<group>"; };
+		67DADD55297F04F40099BE08 /* string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string.h; sourceTree = "<group>"; };
+		67DADD56297F04F40099BE08 /* prevector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prevector.h; sourceTree = "<group>"; };
+		67DADD57297F04F40099BE08 /* attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attributes.h; sourceTree = "<group>"; };
+		67DADD58297F04F40099BE08 /* uint256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uint256.h; sourceTree = "<group>"; };
+		67DADD59297F04F40099BE08 /* uint256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uint256.cpp; sourceTree = "<group>"; };
+		67DADD5A297F04F40099BE08 /* span.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = span.h; sourceTree = "<group>"; };
+		67DADD5B297F04F40099BE08 /* hash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hash.cpp; sourceTree = "<group>"; };
+		67DADD5C297F04F40099BE08 /* serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serialize.h; sourceTree = "<group>"; };
+		67DADD5D297F04F40099BE08 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		67DADD5E297F04F40099BE08 /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
+		67DADD7B297F07700099BE08 /* random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = random.h; sourceTree = "<group>"; };
+		67E0013B297F0A970093AD71 /* libsecp256k1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsecp256k1.a; path = ../../../../../usr/local/lib/libsecp256k1.a; sourceTree = "<group>"; };
+		67E0013C297F0A970093AD71 /* libsecp256k1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsecp256k1.1.dylib; path = ../../../../../usr/local/lib/libsecp256k1.1.dylib; sourceTree = "<group>"; };
+		67E0013D297F0A970093AD71 /* libsecp256k1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsecp256k1.0.dylib; path = ../../../../../usr/local/lib/libsecp256k1.0.dylib; sourceTree = "<group>"; };
+		67E0013E297F0A970093AD71 /* libsecp256k1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsecp256k1.dylib; path = ../../../../../usr/local/lib/libsecp256k1.dylib; sourceTree = "<group>"; };
+		67E0013F297F0A970093AD71 /* libsecp256k1.la */ = {isa = PBXFileReference; lastKnownFileType = text; name = libsecp256k1.la; path = ../../../../../usr/local/lib/libsecp256k1.la; sourceTree = "<group>"; };
+		67E00142297F0A9A0093AD71 /* musig2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = musig2; path = "/Users/burak/Desktop/Bits/musig2-cpp/build/Debug/musig2"; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67DADD28297F04900099BE08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67E00143297F0A9A0093AD71 /* libsecp256k1.1.dylib in Frameworks */,
+				67E00140297F0A9A0093AD71 /* libsecp256k1.0.dylib in Frameworks */,
+				67E00145297F0A9A0093AD71 /* libsecp256k1.a in Frameworks */,
+				67E00146297F0A9A0093AD71 /* libsecp256k1.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67DADD22297F04900099BE08 = {
+			isa = PBXGroup;
+			children = (
+				67DADD2D297F04900099BE08 /* musig2 */,
+				67E0013A297F0A970093AD71 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		67DADD2D297F04900099BE08 /* musig2 */ = {
+			isa = PBXGroup;
+			children = (
+				67DADD35297F04F40099BE08 /* src */,
+			);
+			path = musig2;
+			sourceTree = "<group>";
+		};
+		67DADD35297F04F40099BE08 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				67DADD7B297F07700099BE08 /* random.h */,
+				67DADD36297F04F40099BE08 /* crypto */,
+				67DADD46297F04F40099BE08 /* compat */,
+				67DADD4E297F04F40099BE08 /* version.h */,
+				67DADD4F297F04F40099BE08 /* util */,
+				67DADD56297F04F40099BE08 /* prevector.h */,
+				67DADD57297F04F40099BE08 /* attributes.h */,
+				67DADD58297F04F40099BE08 /* uint256.h */,
+				67DADD59297F04F40099BE08 /* uint256.cpp */,
+				67DADD5A297F04F40099BE08 /* span.h */,
+				67DADD5B297F04F40099BE08 /* hash.cpp */,
+				67DADD5C297F04F40099BE08 /* serialize.h */,
+				67DADD5D297F04F40099BE08 /* main.cpp */,
+				67DADD5E297F04F40099BE08 /* hash.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		67DADD36297F04F40099BE08 /* crypto */ = {
+			isa = PBXGroup;
+			children = (
+				67DADD37297F04F40099BE08 /* ripemd160.h */,
+				67DADD38297F04F40099BE08 /* muhash.h */,
+				67DADD39297F04F40099BE08 /* hmac_sha256.cpp */,
+				67DADD3A297F04F40099BE08 /* hmac_sha512.h */,
+				67DADD3B297F04F40099BE08 /* sha256.h */,
+				67DADD3C297F04F40099BE08 /* sha512.cpp */,
+				67DADD3D297F04F40099BE08 /* hmac_sha256.h */,
+				67DADD3E297F04F40099BE08 /* sha512.h */,
+				67DADD3F297F04F40099BE08 /* hmac_sha512.cpp */,
+				67DADD40297F04F40099BE08 /* common.h */,
+				67DADD41297F04F40099BE08 /* sha256.cpp */,
+				67DADD42297F04F40099BE08 /* chacha20.h */,
+				67DADD43297F04F40099BE08 /* chacha20.cpp */,
+				67DADD44297F04F40099BE08 /* ripemd160.cpp */,
+				67DADD45297F04F40099BE08 /* muhash.cpp */,
+			);
+			path = crypto;
+			sourceTree = "<group>";
+		};
+		67DADD46297F04F40099BE08 /* compat */ = {
+			isa = PBXGroup;
+			children = (
+				67DADD47297F04F40099BE08 /* stdin.h */,
+				67DADD48297F04F40099BE08 /* cpuid.h */,
+				67DADD49297F04F40099BE08 /* endian.h */,
+				67DADD4A297F04F40099BE08 /* stdin.cpp */,
+				67DADD4B297F04F40099BE08 /* byteswap.h */,
+				67DADD4C297F04F40099BE08 /* compat.h */,
+				67DADD4D297F04F40099BE08 /* assumptions.h */,
+			);
+			path = compat;
+			sourceTree = "<group>";
+		};
+		67DADD4F297F04F40099BE08 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				67DADD50297F04F40099BE08 /* spanparsing.cpp */,
+				67DADD51297F04F40099BE08 /* string.cpp */,
+				67DADD52297F04F40099BE08 /* strencodings.cpp */,
+				67DADD53297F04F40099BE08 /* strencodings.h */,
+				67DADD54297F04F40099BE08 /* spanparsing.h */,
+				67DADD55297F04F40099BE08 /* string.h */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		67E0013A297F0A970093AD71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67E0013D297F0A970093AD71 /* libsecp256k1.0.dylib */,
+				67E0013C297F0A970093AD71 /* libsecp256k1.1.dylib */,
+				67E0013B297F0A970093AD71 /* libsecp256k1.a */,
+				67E0013E297F0A970093AD71 /* libsecp256k1.dylib */,
+				67E0013F297F0A970093AD71 /* libsecp256k1.la */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67DADD2A297F04900099BE08 /* musig2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67DADD32297F04900099BE08 /* Build configuration list for PBXNativeTarget "musig2" */;
+			buildPhases = (
+				67DADD27297F04900099BE08 /* Sources */,
+				67DADD28297F04900099BE08 /* Frameworks */,
+				67DADD29297F04900099BE08 /* CopyFiles */,
+				67E00148297F0A9A0093AD71 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = musig2;
+			productName = musig2;
+			productReference = 67E00142297F0A9A0093AD71 /* musig2 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67DADD23297F04900099BE08 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					67DADD2A297F04900099BE08 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+				};
+			};
+			buildConfigurationList = 67DADD26297F04900099BE08 /* Build configuration list for PBXProject "musig2" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 67DADD22297F04900099BE08;
+			productRefGroup = 67DADD22297F04900099BE08;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67DADD2A297F04900099BE08 /* musig2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67DADD27297F04900099BE08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67DADD62297F04F40099BE08 /* sha256.cpp in Sources */,
+				67DADD6A297F04F40099BE08 /* uint256.cpp in Sources */,
+				67DADD65297F04F40099BE08 /* muhash.cpp in Sources */,
+				67DADD5F297F04F40099BE08 /* hmac_sha256.cpp in Sources */,
+				67DADD6C297F04F40099BE08 /* main.cpp in Sources */,
+				67DADD60297F04F40099BE08 /* sha512.cpp in Sources */,
+				67DADD66297F04F40099BE08 /* stdin.cpp in Sources */,
+				67DADD69297F04F40099BE08 /* strencodings.cpp in Sources */,
+				67DADD63297F04F40099BE08 /* chacha20.cpp in Sources */,
+				67DADD67297F04F40099BE08 /* spanparsing.cpp in Sources */,
+				67DADD64297F04F40099BE08 /* ripemd160.cpp in Sources */,
+				67DADD68297F04F40099BE08 /* string.cpp in Sources */,
+				67DADD6B297F04F40099BE08 /* hash.cpp in Sources */,
+				67DADD61297F04F40099BE08 /* hmac_sha512.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		67DADD30297F04900099BE08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		67DADD31297F04900099BE08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		67DADD33297F04900099BE08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84M8H89V67;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		67DADD34297F04900099BE08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84M8H89V67;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67DADD26297F04900099BE08 /* Build configuration list for PBXProject "musig2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67DADD30297F04900099BE08 /* Debug */,
+				67DADD31297F04900099BE08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67DADD32297F04900099BE08 /* Build configuration list for PBXNativeTarget "musig2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67DADD33297F04900099BE08 /* Debug */,
+				67DADD34297F04900099BE08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67DADD23297F04900099BE08 /* Project object */;
+}
