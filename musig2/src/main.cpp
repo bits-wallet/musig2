@@ -4,12 +4,10 @@
 //
 //  Created by Burak on 22.01.2023.
 //
-
 #include <iostream>
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
-
 #include <secp256k1.h>
 #include <secp256k1_ecdh.h>
 #include <secp256k1_schnorrsig.h>
@@ -43,8 +41,17 @@ valtype hash_keys(secp256k1_context* context, std::vector<valtype> pubkeys){
 valtype key_agg_coeff(secp256k1_context* context, std::vector<valtype> pubkeys, valtype pubkey){
     std::cout << "key_agg_coeff start" << std::endl;
     assert(pubkeys.size() > 1);
-    bool isSecond = (pubkeys[1] == pubkey);
-    if(isSecond)
+    
+    valtype secondKey = WizData::hexStringToValtype("0000000000000000000000000000000000000000000000000000000000000000");
+    
+    for (int i = 1; i < pubkeys.size(); i++) {
+        if(pubkeys[i] != pubkeys[0]){
+            secondKey = pubkeys[i];
+            break;
+        }
+    }
+    
+    if(pubkey == secondKey)
         return WizData::hexStringToValtype("0000000000000000000000000000000000000000000000000000000000000001");
         
     valtype L = hash_keys(context, pubkeys);
@@ -102,7 +109,6 @@ valtype key_agg(secp256k1_context* context, std::vector<valtype> pubkeys) {
     unsigned char final_aggkey[33];
     size_t final_aggkey_size = 33;
     secp256k1_ec_pubkey_serialize(context, final_aggkey, &final_aggkey_size, &agg_key, SECP256K1_EC_COMPRESSED);
-    
     valtype final_aggkey_valtype = WizData::charArrayToValtype(final_aggkey, 33);
     valtype aggkey_xonly;
     aggkey_xonly.insert(aggkey_xonly.begin(), final_aggkey_valtype.begin() + 1, final_aggkey_valtype.end());
@@ -127,10 +133,15 @@ int main(void) {
     
     std::vector<valtype> pubkeys;
     pubkeys.push_back(pubkey1);
+    pubkeys.push_back(pubkey1);
     pubkeys.push_back(pubkey2);
-    pubkeys.push_back(pubkey3);
+    pubkeys.push_back(pubkey2);
     
     valtype agg = key_agg(ctx, pubkeys);
+    
+    std::cout << "kaka " << (int)agg[0] << std::endl;
+    std::cout << "kaka " << (int)agg[1] << std::endl;
+    std::cout << "kaka " << (int)agg[2] << std::endl;
 
     return 0;
 }
