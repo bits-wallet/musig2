@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		675A79D5297FFEB900148565 /* wizdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675A79D4297FFEB900148565 /* wizdata.cpp */; };
 		67DADD5F297F04F40099BE08 /* hmac_sha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD39297F04F40099BE08 /* hmac_sha256.cpp */; };
 		67DADD60297F04F40099BE08 /* sha512.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD3C297F04F40099BE08 /* sha512.cpp */; };
 		67DADD61297F04F40099BE08 /* hmac_sha512.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD3F297F04F40099BE08 /* hmac_sha512.cpp */; };
@@ -56,6 +57,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		675A79D3297FFEB900148565 /* wizdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wizdata.h; sourceTree = "<group>"; };
+		675A79D4297FFEB900148565 /* wizdata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wizdata.cpp; sourceTree = "<group>"; };
+		67BAB2F5297F0B130092FF9B /* musig2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = musig2; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DADD37297F04F40099BE08 /* ripemd160.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ripemd160.h; sourceTree = "<group>"; };
 		67DADD38297F04F40099BE08 /* muhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = muhash.h; sourceTree = "<group>"; };
 		67DADD39297F04F40099BE08 /* hmac_sha256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hmac_sha256.cpp; sourceTree = "<group>"; };
@@ -100,7 +104,6 @@
 		67E0013D297F0A970093AD71 /* libsecp256k1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsecp256k1.0.dylib; path = ../../../../../usr/local/lib/libsecp256k1.0.dylib; sourceTree = "<group>"; };
 		67E0013E297F0A970093AD71 /* libsecp256k1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsecp256k1.dylib; path = ../../../../../usr/local/lib/libsecp256k1.dylib; sourceTree = "<group>"; };
 		67E0013F297F0A970093AD71 /* libsecp256k1.la */ = {isa = PBXFileReference; lastKnownFileType = text; name = libsecp256k1.la; path = ../../../../../usr/local/lib/libsecp256k1.la; sourceTree = "<group>"; };
-		67E00142297F0A9A0093AD71 /* musig2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = musig2; path = "/Users/burak/Desktop/Bits/musig2-cpp/build/Debug/musig2"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,7 @@
 			children = (
 				67DADD2D297F04900099BE08 /* musig2 */,
 				67E0013A297F0A970093AD71 /* Frameworks */,
+				67BAB2F5297F0B130092FF9B /* musig2 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,20 +141,22 @@
 		67DADD35297F04F40099BE08 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				67DADD7B297F07700099BE08 /* random.h */,
+				675A79D4297FFEB900148565 /* wizdata.cpp */,
+				675A79D3297FFEB900148565 /* wizdata.h */,
 				67DADD36297F04F40099BE08 /* crypto */,
 				67DADD46297F04F40099BE08 /* compat */,
-				67DADD4E297F04F40099BE08 /* version.h */,
 				67DADD4F297F04F40099BE08 /* util */,
 				67DADD56297F04F40099BE08 /* prevector.h */,
 				67DADD57297F04F40099BE08 /* attributes.h */,
+				67DADD4E297F04F40099BE08 /* version.h */,
 				67DADD58297F04F40099BE08 /* uint256.h */,
-				67DADD59297F04F40099BE08 /* uint256.cpp */,
+				67DADD7B297F07700099BE08 /* random.h */,
 				67DADD5A297F04F40099BE08 /* span.h */,
-				67DADD5B297F04F40099BE08 /* hash.cpp */,
 				67DADD5C297F04F40099BE08 /* serialize.h */,
-				67DADD5D297F04F40099BE08 /* main.cpp */,
 				67DADD5E297F04F40099BE08 /* hash.h */,
+				67DADD5D297F04F40099BE08 /* main.cpp */,
+				67DADD5B297F04F40099BE08 /* hash.cpp */,
+				67DADD59297F04F40099BE08 /* uint256.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -234,7 +240,7 @@
 			);
 			name = musig2;
 			productName = musig2;
-			productReference = 67E00142297F0A9A0093AD71 /* musig2 */;
+			productReference = 67BAB2F5297F0B130092FF9B /* musig2 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -277,6 +283,7 @@
 				67DADD62297F04F40099BE08 /* sha256.cpp in Sources */,
 				67DADD6A297F04F40099BE08 /* uint256.cpp in Sources */,
 				67DADD65297F04F40099BE08 /* muhash.cpp in Sources */,
+				675A79D5297FFEB900148565 /* wizdata.cpp in Sources */,
 				67DADD5F297F04F40099BE08 /* hmac_sha256.cpp in Sources */,
 				67DADD6C297F04F40099BE08 /* main.cpp in Sources */,
 				67DADD60297F04F40099BE08 /* sha512.cpp in Sources */,

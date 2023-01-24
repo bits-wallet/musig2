@@ -7,117 +7,81 @@
  * EXAMPLES_COPYING or https://creativecommons.org/publicdomain/zero/1.0 *
  *************************************************************************/
 
+#include <iostream>
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
 
 #include <secp256k1.h>
 #include <secp256k1_ecdh.h>
-
+#include <secp256k1_schnorrsig.h>
+#include <secp256k1_preallocated.h>
+#include <secp256k1_extrakeys.h>
+#include <secp256k1_recovery.h>
 #include "random.h"
+#include "hash.h"
+#include "wizdata.h"
+
+valtype hash_keys(secp256k1_context* context, std::vector<valtype> pubkeys){
+    unsigned char hash32[32];
+    unsigned char tag[12] = "KeyAgg list";
+    size_t taglen = 11;
+    
+    valtype msg_;
+    
+    for(int i = 0; i < pubkeys.size(); i++){
+        msg_.insert(msg_.end(), pubkeys[i].begin(), pubkeys[i].end());
+    }
+    size_t msglen = msg_.size();
+    
+    unsigned char msg[msg_.size()];
+    std::copy(begin(msg_), end(msg_), msg);
+    
+    secp256k1_tagged_sha256(context, hash32, tag, taglen, msg, msglen);
+    
+    return *WizData::charArrayToValtype(hash32, 32);
+    
+}
+
+valtype key_agg_coeff_internal(secp256k1_context* context, std::vector<valtype> pubkeys, valtype pubkey){
+    assert(pubkeys.size() > 1);
+    bool isSecond = (pubkeys[1] == pubkey);
+    if(isSecond)
+        return WizData::hexStringToValtype("0000000000000000000000000000000000000000000000000000000000000001");
+        
+    valtype L = hash_keys(context, pubkeys);
+    
+    unsigned char hash32[32];
+    unsigned char tag[19] = "KeyAgg coefficient";
+    size_t taglen = 18;
+    
+    valtype msg_;
+    msg_.insert(msg_.begin(), L.begin(), L.end());
+    msg_.insert(msg_.end(), pubkey.begin(), pubkey.end());
+    
+    size_t msglen = msg_.size();
+    
+    unsigned char msg[msg_.size()];
+    std::copy(begin(msg_), end(msg_), msg);
+    
+    secp256k1_tagged_sha256(context, hash32, tag, taglen, msg, msglen);
+    
+    return *WizData::charArrayToValtype(hash32, 32);
+}
+
 
 
 int main(void) {
-    unsigned char seckey1[32];
-    unsigned char seckey2[32];
-    unsigned char compressed_pubkey1[33];
-    unsigned char compressed_pubkey2[33];
-    unsigned char shared_secret1[32];
-    unsigned char shared_secret2[32];
+    
     unsigned char randomize[32];
     int return_val;
-    size_t len;
-    secp256k1_pubkey pubkey1;
-    secp256k1_pubkey pubkey2;
 
-    /* Before we can call actual API functions, we need to create a "context". */
     secp256k1_context* ctx = secp256k1_context_create(SECP256K1_CONTEXT_NONE);
-    if (!fill_random(randomize, sizeof(randomize))) {
-        printf("Failed to generate randomness\n");
+    if (!fill_random(randomize, sizeof(randomize)))
         return 1;
-    }
-    /* Randomizing the context is recommended to protect against side-channel
-     * leakage See `secp256k1_context_randomize` in secp256k1.h for more
-     * information about it. This should never fail. */
+    
     return_val = secp256k1_context_randomize(ctx, randomize);
     assert(return_val);
-
-    /*** Key Generation ***/
-
-    /* If the secret key is zero or out of range (bigger than secp256k1's
-     * order), we try to sample a new key. Note that the probability of this
-     * happening is negligible. */
-    while (1) {
-        if (!fill_random(seckey1, sizeof(seckey1)) || !fill_random(seckey2, sizeof(seckey2))) {
-            printf("Failed to generate randomness\n");
-            return 1;
-        }
-        if (secp256k1_ec_seckey_verify(ctx, seckey1) && secp256k1_ec_seckey_verify(ctx, seckey2)) {
-            break;
-        }
-    }
-
-    /* Public key creation using a valid context with a verified secret key should never fail */
-    return_val = secp256k1_ec_pubkey_create(ctx, &pubkey1, seckey1);
-    assert(return_val);
-    return_val = secp256k1_ec_pubkey_create(ctx, &pubkey2, seckey2);
-    assert(return_val);
-
-    /* Serialize pubkey1 in a compressed form (33 bytes), should always return 1 */
-    len = sizeof(compressed_pubkey1);
-    return_val = secp256k1_ec_pubkey_serialize(ctx, compressed_pubkey1, &len, &pubkey1, SECP256K1_EC_COMPRESSED);
-    assert(return_val);
-    /* Should be the same size as the size of the output, because we passed a 33 byte array. */
-    assert(len == sizeof(compressed_pubkey1));
-
-    /* Serialize pubkey2 in a compressed form (33 bytes) */
-    len = sizeof(compressed_pubkey2);
-    return_val = secp256k1_ec_pubkey_serialize(ctx, compressed_pubkey2, &len, &pubkey2, SECP256K1_EC_COMPRESSED);
-    assert(return_val);
-    /* Should be the same size as the size of the output, because we passed a 33 byte array. */
-    assert(len == sizeof(compressed_pubkey2));
-
-    /*** Creating the shared secret ***/
-
-    /* Perform ECDH with seckey1 and pubkey2. Should never fail with a verified
-     * seckey and valid pubkey */
-    return_val = secp256k1_ecdh(ctx, shared_secret1, &pubkey2, seckey1, NULL, NULL);
-    assert(return_val);
-
-    /* Perform ECDH with seckey2 and pubkey1. Should never fail with a verified
-     * seckey and valid pubkey */
-    return_val = secp256k1_ecdh(ctx, shared_secret2, &pubkey1, seckey2, NULL, NULL);
-    assert(return_val);
-
-    /* Both parties should end up with the same shared secret */
-    return_val = memcmp(shared_secret1, shared_secret2, sizeof(shared_secret1));
-    assert(return_val == 0);
-
-    printf("Secret Key1: ");
-    print_hex(seckey1, sizeof(seckey1));
-    printf("Compressed Pubkey1: ");
-    print_hex(compressed_pubkey1, sizeof(compressed_pubkey1));
-    printf("\nSecret Key2: ");
-    print_hex(seckey2, sizeof(seckey2));
-    printf("Compressed Pubkey2: ");
-    print_hex(compressed_pubkey2, sizeof(compressed_pubkey2));
-    printf("\nShared Secret: ");
-    print_hex(shared_secret1, sizeof(shared_secret1));
-
-    /* This will clear everything from the context and free the memory */
-    secp256k1_context_destroy(ctx);
-
-    /* It's best practice to try to clear secrets from memory after using them.
-     * This is done because some bugs can allow an attacker to leak memory, for
-     * example through "out of bounds" array access (see Heartbleed), Or the OS
-     * swapping them to disk. Hence, we overwrite the secret key buffer with zeros.
-     *
-     * TODO: Prevent these writes from being optimized out, as any good compiler
-     * will remove any writes that aren't used. */
-    memset(seckey1, 0, sizeof(seckey1));
-    memset(seckey2, 0, sizeof(seckey2));
-    memset(shared_secret1, 0, sizeof(shared_secret1));
-    memset(shared_secret2, 0, sizeof(shared_secret2));
 
     return 0;
 }
