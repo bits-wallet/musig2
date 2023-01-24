@@ -37,10 +37,11 @@ valtype hash_keys(secp256k1_context* context, std::vector<valtype> pubkeys){
     
     secp256k1_tagged_sha256(context, hash32, tag, taglen, msg, msglen);
     
-    return *WizData::charArrayToValtype(hash32, 32);
+    return WizData::charArrayToValtype(hash32, 32);
 }
 
 valtype key_agg_coeff(secp256k1_context* context, std::vector<valtype> pubkeys, valtype pubkey){
+    std::cout << "key_agg_coeff start" << std::endl;
     assert(pubkeys.size() > 1);
     bool isSecond = (pubkeys[1] == pubkey);
     if(isSecond)
@@ -63,7 +64,50 @@ valtype key_agg_coeff(secp256k1_context* context, std::vector<valtype> pubkeys, 
     
     secp256k1_tagged_sha256(context, hash32, tag, taglen, msg, msglen);
     
-    return *WizData::charArrayToValtype(hash32, 32);
+    return WizData::charArrayToValtype(hash32, 32);
+}
+
+valtype key_agg(secp256k1_context* context, std::vector<valtype> pubkeys) {
+    
+    secp256k1_pubkey agg_key;
+    
+    for (int i = 0; i < pubkeys.size(); i++) {
+        
+        valtype coefficient = key_agg_coeff(context, pubkeys, pubkeys[i]);
+
+        unsigned char tweak32[32];
+        WizData::valtypeToPointer(coefficient, tweak32);
+        
+        unsigned char pubkey_input[33];
+        WizData::valtypeToPointer(pubkeys[i], pubkey_input);
+
+        secp256k1_pubkey secp256k1_publickey;
+        size_t inputlen = 33;
+        
+        secp256k1_ec_pubkey_parse(context, &secp256k1_publickey, pubkey_input, inputlen);
+        secp256k1_ec_pubkey_tweak_mul(context, &secp256k1_publickey, tweak32);
+        
+        if(i == 0){
+            agg_key = secp256k1_publickey;
+        }
+        else {
+            secp256k1_pubkey* d[2];
+            d[0] = &agg_key;
+            d[1] = &secp256k1_publickey;
+            secp256k1_pubkey new_aggkey;
+            secp256k1_ec_pubkey_combine(context, &new_aggkey, d, 2);
+            agg_key = new_aggkey;
+        }
+    }
+    unsigned char final_aggkey[33];
+    size_t final_aggkey_size = 33;
+    secp256k1_ec_pubkey_serialize(context, final_aggkey, &final_aggkey_size, &agg_key, SECP256K1_EC_COMPRESSED);
+    
+    valtype final_aggkey_valtype = WizData::charArrayToValtype(final_aggkey, 33);
+    valtype aggkey_xonly;
+    aggkey_xonly.insert(aggkey_xonly.begin(), final_aggkey_valtype.begin() + 1, final_aggkey_valtype.end());
+    
+    return aggkey_xonly;
 }
 
 int main(void) {
@@ -86,12 +130,7 @@ int main(void) {
     pubkeys.push_back(pubkey2);
     pubkeys.push_back(pubkey3);
     
-    valtype xx = key_agg_coeff(ctx, pubkeys, pubkey3);
-    
-    std::cout << (int)xx[0] << std::endl;
-    std::cout << (int)xx[1] << std::endl;
-    std::cout << (int)xx[2] << std::endl;
-    std::cout << (int)xx[3] << std::endl;
+    valtype agg = key_agg(ctx, pubkeys);
 
     return 0;
 }

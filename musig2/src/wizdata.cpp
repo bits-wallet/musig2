@@ -110,10 +110,17 @@ valtype *WizData::Uint64ToLE(uint64_t in) {
     return returnVal;
 }
 
-valtype *WizData::charArrayToValtype(unsigned char* charArray, uint32_t size) {
-    valtype *returnVal = new valtype[size];
+void WizData::valtypeToPointer(valtype val, unsigned char* pointer) {
+    
+    for (int i = 0; i < val.size(); i++) {
+        pointer[i] = val[i];
+    }
+}
+
+valtype WizData::charArrayToValtype(unsigned char* charArray, uint32_t size) {
+    valtype returnVal;
     for (int i = 0; i < size; i++) {
-        returnVal->push_back(charArray[i]);
+        returnVal.push_back(charArray[i]);
     }
     return returnVal;
 }

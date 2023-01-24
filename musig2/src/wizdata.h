@@ -39,7 +39,8 @@ public:
     static uint64_t *LEtoUint64(valtype in);
     static valtype hexStringToValtype(std::string const& hex);
     static valtype prefixCompactSizeCast(uint32_t size);
-    static valtype *charArrayToValtype(unsigned char* charArray, uint32_t size);
+    static valtype charArrayToValtype(unsigned char* charArray, uint32_t size);
+    static void valtypeToPointer(valtype val, unsigned char* pointer);
 };
 
 
