@@ -1,11 +1,9 @@
-/*************************************************************************
- * Written in 2020-2022 by Elichai Turkel                                *
- * To the extent possible under law, the author(s) have dedicated all    *
- * copyright and related and neighboring rights to the software in this  *
- * file to the public domain worldwide. This software is distributed     *
- * without any warranty. For the CC0 Public Domain Dedication, see       *
- * EXAMPLES_COPYING or https://creativecommons.org/publicdomain/zero/1.0 *
- *************************************************************************/
+//
+//  main.cpp
+//  musig2-cpp
+//
+//  Created by Burak on 22.01.2023.
+//
 
 #include <iostream>
 #include <stdio.h>
@@ -40,10 +38,9 @@ valtype hash_keys(secp256k1_context* context, std::vector<valtype> pubkeys){
     secp256k1_tagged_sha256(context, hash32, tag, taglen, msg, msglen);
     
     return *WizData::charArrayToValtype(hash32, 32);
-    
 }
 
-valtype key_agg_coeff_internal(secp256k1_context* context, std::vector<valtype> pubkeys, valtype pubkey){
+valtype key_agg_coeff(secp256k1_context* context, std::vector<valtype> pubkeys, valtype pubkey){
     assert(pubkeys.size() > 1);
     bool isSecond = (pubkeys[1] == pubkey);
     if(isSecond)
@@ -69,8 +66,6 @@ valtype key_agg_coeff_internal(secp256k1_context* context, std::vector<valtype> 
     return *WizData::charArrayToValtype(hash32, 32);
 }
 
-
-
 int main(void) {
     
     unsigned char randomize[32];
@@ -82,6 +77,22 @@ int main(void) {
     
     return_val = secp256k1_context_randomize(ctx, randomize);
     assert(return_val);
+    
+    valtype pubkey1 = WizData::hexStringToValtype("02F9308A019258C31049344F85F89D5229B531C845836F99B08601F113BCE036F9");
+    valtype pubkey2 = WizData::hexStringToValtype("03DFF1D77F2A671C5F36183726DB2341BE58FEAE1DA2DECED843240F7B502BA659");
+    valtype pubkey3 = WizData::hexStringToValtype("023590A94E768F8E1815C2F24B4D80A8E3149316C3518CE7B7AD338368D038CA66");
+    
+    std::vector<valtype> pubkeys;
+    pubkeys.push_back(pubkey1);
+    pubkeys.push_back(pubkey2);
+    pubkeys.push_back(pubkey3);
+    
+    valtype xx = key_agg_coeff(ctx, pubkeys, pubkey3);
+    
+    std::cout << (int)xx[0] << std::endl;
+    std::cout << (int)xx[1] << std::endl;
+    std::cout << (int)xx[2] << std::endl;
+    std::cout << (int)xx[3] << std::endl;
 
     return 0;
 }
