@@ -67,7 +67,6 @@ valtype key_agg_coeff(secp256k1_context* context, std::vector<valtype> pubkeys, 
 }
 
 int main(void) {
-    
     unsigned char randomize[32];
     int return_val;
 
