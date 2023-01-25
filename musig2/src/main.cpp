@@ -17,6 +17,7 @@
 #include "random.h"
 #include "hash.h"
 #include "wizdata.h"
+#include "uintwide_t.h"
 
 valtype hash_keys(secp256k1_context* context, std::vector<valtype> pubkeys){
     unsigned char hash32[32];
@@ -120,6 +121,8 @@ int main(void) {
     unsigned char randomize[32];
     int return_val;
 
+    
+    
     secp256k1_context* ctx = secp256k1_context_create(SECP256K1_CONTEXT_NONE);
     if (!fill_random(randomize, sizeof(randomize)))
         return 1;
@@ -142,6 +145,47 @@ int main(void) {
     std::cout << "kaka " << (int)agg[0] << std::endl;
     std::cout << "kaka " << (int)agg[1] << std::endl;
     std::cout << "kaka " << (int)agg[2] << std::endl;
+    
+    
+    std::cout << "SCALAR arge " << std::endl;
+    
+    valtype mamma = WizData::hexStringToValtype("48c4");
+    unsigned char ma[2];
+    WizData::valtypeToPointer(mamma, ma);
+    
+    
+    
+    uint256 za;
+    za.SetHex("48c480767da7f1395797e0755f0aedaebac4b24ee8d9be7dea715b61c37aa7aa");
 
+
+
+    
+    char mama[1];
+    mama[0] = 12;
+    
+    math::wide_integer::uintwide_t<512> a = "0x4db67bcf877fafe2d498c979617e489f1744a246009c3a7d29201ac1adebcebb";
+    math::wide_integer::uintwide_t<512> b = "0xf53303c7344599851a8dabd15bd8f4a311e15981e42c4c0c8f2748b205b5b24d";
+    math::wide_integer::uintwide_t<512> c = "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141";
+
+    
+    math::wide_integer::uintwide_t<512> d = (a + b) % c;
+    
+    std::string mamasstr;
+
+    std::stringstream mamas;
+    mamas << std::hex << d;
+
+    mamasstr = mamas.str();
+    
+    std::cout << mamasstr << std::endl;
+    std::cout << d << std::endl;
+   
+    
+
+   
+
+    
+    
     return 0;
 }
