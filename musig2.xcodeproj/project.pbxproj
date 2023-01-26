@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		670D33E32982B55D00ABA5B2 /* musig2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 670D33E12982B55D00ABA5B2 /* musig2.cpp */; };
 		675A79D5297FFEB900148565 /* wizdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675A79D4297FFEB900148565 /* wizdata.cpp */; };
 		67DADD5F297F04F40099BE08 /* hmac_sha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD39297F04F40099BE08 /* hmac_sha256.cpp */; };
 		67DADD60297F04F40099BE08 /* sha512.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD3C297F04F40099BE08 /* sha512.cpp */; };
@@ -57,10 +58,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		670D33E12982B55D00ABA5B2 /* musig2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = musig2.cpp; sourceTree = "<group>"; };
+		670D33E22982B55D00ABA5B2 /* musig2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = musig2.h; sourceTree = "<group>"; };
 		675A79D3297FFEB900148565 /* wizdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wizdata.h; sourceTree = "<group>"; };
 		675A79D4297FFEB900148565 /* wizdata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wizdata.cpp; sourceTree = "<group>"; };
 		67636FC629816B660018A144 /* uintwide_t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uintwide_t.h; sourceTree = "<group>"; };
-		67636FC82982A6560018A144 /* keygen_ctx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keygen_ctx.h; sourceTree = "<group>"; };
 		67BAB2F5297F0B130092FF9B /* musig2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = musig2; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DADD37297F04F40099BE08 /* ripemd160.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ripemd160.h; sourceTree = "<group>"; };
 		67DADD38297F04F40099BE08 /* muhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = muhash.h; sourceTree = "<group>"; };
@@ -160,7 +162,8 @@
 				67DADD58297F04F40099BE08 /* uint256.h */,
 				67DADD59297F04F40099BE08 /* uint256.cpp */,
 				67636FC629816B660018A144 /* uintwide_t.h */,
-				67636FC82982A6560018A144 /* keygen_ctx.h */,
+				670D33E12982B55D00ABA5B2 /* musig2.cpp */,
+				670D33E22982B55D00ABA5B2 /* musig2.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			files = (
 				67DADD62297F04F40099BE08 /* sha256.cpp in Sources */,
 				67DADD6A297F04F40099BE08 /* uint256.cpp in Sources */,
+				670D33E32982B55D00ABA5B2 /* musig2.cpp in Sources */,
 				67DADD65297F04F40099BE08 /* muhash.cpp in Sources */,
 				675A79D5297FFEB900148565 /* wizdata.cpp in Sources */,
 				67DADD5F297F04F40099BE08 /* hmac_sha256.cpp in Sources */,

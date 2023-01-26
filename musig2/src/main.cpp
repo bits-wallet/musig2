@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
-#include "keygen_ctx.h"
+#include "musig2.h"
 
 valtype hash_keys(secp256k1_context* context, std::vector<valtype> pubkeys){
     unsigned char hash32[32];
@@ -31,7 +31,6 @@ valtype hash_keys(secp256k1_context* context, std::vector<valtype> pubkeys){
 }
 
 valtype key_agg_coeff(secp256k1_context* context, std::vector<valtype> pubkeys, valtype pubkey){
-    std::cout << "key_agg_coeff start" << std::endl;
     assert(pubkeys.size() > 1);
     
     valtype secondKey = WizData::hexStringToValtype("0000000000000000000000000000000000000000000000000000000000000000");
@@ -65,7 +64,7 @@ valtype key_agg_coeff(secp256k1_context* context, std::vector<valtype> pubkeys, 
     return WizData::charArrayToValtype(hash32, 32);
 }
 
-valtype key_agg(secp256k1_context* context, std::vector<valtype> pubkeys) {
+KeygenCtx key_agg(secp256k1_context* context, std::vector<valtype> pubkeys) {
     
     secp256k1_pubkey agg_key;
     
@@ -96,22 +95,15 @@ valtype key_agg(secp256k1_context* context, std::vector<valtype> pubkeys) {
             agg_key = new_aggkey;
         }
     }
-    unsigned char final_aggkey[33];
-    size_t final_aggkey_size = 33;
-    secp256k1_ec_pubkey_serialize(context, final_aggkey, &final_aggkey_size, &agg_key, SECP256K1_EC_COMPRESSED);
-    valtype final_aggkey_valtype = WizData::charArrayToValtype(final_aggkey, 33);
-    valtype aggkey_xonly;
-    aggkey_xonly.insert(aggkey_xonly.begin(), final_aggkey_valtype.begin() + 1, final_aggkey_valtype.end());
     
-    return aggkey_xonly;
+    return KeygenCtx(Point(agg_key), uint256_t(1), uint256_t(0));
 }
+
 
 int main(void) {
     unsigned char randomize[32];
     int return_val;
 
-    
-    
     secp256k1_context* ctx = secp256k1_context_create(SECP256K1_CONTEXT_NONE);
     if (!fill_random(randomize, sizeof(randomize)))
         return 1;
@@ -125,23 +117,14 @@ int main(void) {
     
     std::vector<valtype> pubkeys;
     pubkeys.push_back(pubkey1);
-    pubkeys.push_back(pubkey1);
     pubkeys.push_back(pubkey2);
-    pubkeys.push_back(pubkey2);
+    pubkeys.push_back(pubkey3);
     
-    valtype agg = key_agg(ctx, pubkeys);
+    KeygenCtx ehe = key_agg(ctx, pubkeys);
     
-    std::cout << "mama " << WizData::valtypeToHexString(agg) << std::endl;
-   
-    math::wide_integer::uintwide_t<512> a("0xF9308A019258C31049344F85F89D5229B531C845836F99B08601F113BCE036F9");
-    math::wide_integer::uintwide_t<512> b("0xDFF1D77F2A671C5F36183726DB2341BE58FEAE1DA2DECED843240F7B502BA659");
-    math::wide_integer::uintwide_t<512> c = "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141";
-    math::wide_integer::uintwide_t<256> d = (a*b) % c;
-    
-    std::stringstream mamas;
-    mamas << std::hex << d;
-    
-    std::cout << "na " << mamas.str() << std::endl;
-    
+    std::cout << "agg xbytes: " << WizData::valtypeToHexString(ehe.Q.xbytes())  << std::endl;
+    std::cout << "agg cbytes: " << WizData::valtypeToHexString(ehe.Q.cbytes())  << std::endl;
+    std::cout << "agg ybytes: " << WizData::valtypeToHexString(ehe.Q.ybytes())  << std::endl;
+
     return 0;
 }
