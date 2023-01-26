@@ -8,16 +8,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
-#include <secp256k1.h>
-#include <secp256k1_ecdh.h>
-#include <secp256k1_schnorrsig.h>
-#include <secp256k1_preallocated.h>
-#include <secp256k1_extrakeys.h>
-#include <secp256k1_recovery.h>
-#include "random.h"
-#include "hash.h"
-#include "wizdata.h"
-#include "uintwide_t.h"
+#include "keygen_ctx.h"
 
 valtype hash_keys(secp256k1_context* context, std::vector<valtype> pubkeys){
     unsigned char hash32[32];
@@ -34,7 +25,7 @@ valtype hash_keys(secp256k1_context* context, std::vector<valtype> pubkeys){
     unsigned char msg[msg_.size()];
     std::copy(begin(msg_), end(msg_), msg);
     
-    secp256k1_tagged_sha256(context, hash32, tag, taglen, msg, msglen);
+    assert(secp256k1_tagged_sha256(context, hash32, tag, taglen, msg, msglen));
     
     return WizData::charArrayToValtype(hash32, 32);
 }
@@ -59,7 +50,6 @@ valtype key_agg_coeff(secp256k1_context* context, std::vector<valtype> pubkeys, 
     
     unsigned char hash32[32];
     unsigned char tag[19] = "KeyAgg coefficient";
-    size_t taglen = 18;
     
     valtype msg_;
     msg_.insert(msg_.begin(), L.begin(), L.end());
@@ -70,7 +60,7 @@ valtype key_agg_coeff(secp256k1_context* context, std::vector<valtype> pubkeys, 
     unsigned char msg[msg_.size()];
     std::copy(begin(msg_), end(msg_), msg);
     
-    secp256k1_tagged_sha256(context, hash32, tag, taglen, msg, msglen);
+    assert(secp256k1_tagged_sha256(context, hash32, tag, 18, msg, msglen));
     
     return WizData::charArrayToValtype(hash32, 32);
 }
@@ -90,10 +80,9 @@ valtype key_agg(secp256k1_context* context, std::vector<valtype> pubkeys) {
         WizData::valtypeToPointer(pubkeys[i], pubkey_input);
 
         secp256k1_pubkey secp256k1_publickey;
-        size_t inputlen = 33;
         
-        secp256k1_ec_pubkey_parse(context, &secp256k1_publickey, pubkey_input, inputlen);
-        secp256k1_ec_pubkey_tweak_mul(context, &secp256k1_publickey, tweak32);
+        assert(secp256k1_ec_pubkey_parse(context, &secp256k1_publickey, pubkey_input, 33));
+        assert(secp256k1_ec_pubkey_tweak_mul(context, &secp256k1_publickey, tweak32));
         
         if(i == 0){
             agg_key = secp256k1_publickey;
@@ -103,7 +92,7 @@ valtype key_agg(secp256k1_context* context, std::vector<valtype> pubkeys) {
             d[0] = &agg_key;
             d[1] = &secp256k1_publickey;
             secp256k1_pubkey new_aggkey;
-            secp256k1_ec_pubkey_combine(context, &new_aggkey, d, 2);
+            assert(secp256k1_ec_pubkey_combine(context, &new_aggkey, d, 2));
             agg_key = new_aggkey;
         }
     }
@@ -142,50 +131,17 @@ int main(void) {
     
     valtype agg = key_agg(ctx, pubkeys);
     
-    std::cout << "kaka " << (int)agg[0] << std::endl;
-    std::cout << "kaka " << (int)agg[1] << std::endl;
-    std::cout << "kaka " << (int)agg[2] << std::endl;
-    
-    
-    std::cout << "SCALAR arge " << std::endl;
-    
-    valtype mamma = WizData::hexStringToValtype("48c4");
-    unsigned char ma[2];
-    WizData::valtypeToPointer(mamma, ma);
-    
-    
-    
-    uint256 za;
-    za.SetHex("48c480767da7f1395797e0755f0aedaebac4b24ee8d9be7dea715b61c37aa7aa");
-
-
-
-    
-    char mama[1];
-    mama[0] = 12;
-    
-    math::wide_integer::uintwide_t<512> a = "0x4db67bcf877fafe2d498c979617e489f1744a246009c3a7d29201ac1adebcebb";
-    math::wide_integer::uintwide_t<512> b = "0xf53303c7344599851a8dabd15bd8f4a311e15981e42c4c0c8f2748b205b5b24d";
+    std::cout << "mama " << WizData::valtypeToHexString(agg) << std::endl;
+   
+    math::wide_integer::uintwide_t<512> a("0xF9308A019258C31049344F85F89D5229B531C845836F99B08601F113BCE036F9");
+    math::wide_integer::uintwide_t<512> b("0xDFF1D77F2A671C5F36183726DB2341BE58FEAE1DA2DECED843240F7B502BA659");
     math::wide_integer::uintwide_t<512> c = "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141";
-
+    math::wide_integer::uintwide_t<256> d = (a*b) % c;
     
-    math::wide_integer::uintwide_t<512> d = (a + b) % c;
-    
-    std::string mamasstr;
-
     std::stringstream mamas;
     mamas << std::hex << d;
-
-    mamasstr = mamas.str();
     
-    std::cout << mamasstr << std::endl;
-    std::cout << d << std::endl;
-   
-    
-
-   
-
-    
+    std::cout << "na " << mamas.str() << std::endl;
     
     return 0;
 }

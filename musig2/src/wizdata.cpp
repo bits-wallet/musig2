@@ -6,6 +6,7 @@
 //
 
 #include "wizdata.h"
+#include <iomanip>
 
 valtype WizData::splitValtypeSet(valtype *in, int startIndex, int size){
     valtype returnValType;
@@ -138,6 +139,18 @@ valtype WizData::hexStringToValtype(std::string const& hex) {
         
     return {std::istream_iterator<int>{strm}, {}};
 }
+
+std::string WizData::valtypeToHexString(valtype val) {
+
+    std::ostringstream oss;
+    oss << std::hex << std::setfill('0');
+    for(size_t i = 0; i < val.size(); ++i) {
+        oss << std::setw(2) << (unsigned int)val[i];
+    }
+    std::string result = oss.str();
+    
+    return result;
+};
 
 valtype WizData::prefixCompactSizeCast(uint32_t size) {
     valtype returnValtype;
