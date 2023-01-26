@@ -131,18 +131,10 @@
 		67DADD22297F04900099BE08 = {
 			isa = PBXGroup;
 			children = (
-				67DADD2D297F04900099BE08 /* musig2 */,
+				67DADD35297F04F40099BE08 /* src */,
 				67E0013A297F0A970093AD71 /* Frameworks */,
 				67BAB2F5297F0B130092FF9B /* musig2 */,
 			);
-			sourceTree = "<group>";
-		};
-		67DADD2D297F04900099BE08 /* musig2 */ = {
-			isa = PBXGroup;
-			children = (
-				67DADD35297F04F40099BE08 /* src */,
-			);
-			path = musig2;
 			sourceTree = "<group>";
 		};
 		67DADD35297F04F40099BE08 /* src */ = {
