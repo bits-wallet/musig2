@@ -6,6 +6,7 @@
 //
 
 #include "musig2.h"
+#include <sstream>
 
 Point::Point(point_t point_t) {
     unsigned char randomize[32];
@@ -34,12 +35,21 @@ valtype Point::xbytes() {
     return xbytes_val;
 }
 
-valtype Point::ybytes() {
+valtype Point::fullbytes() {
     unsigned char fullbytes[65];
     size_t outputlen = 65;
     assert(secp256k1_ec_pubkey_serialize(this->context, fullbytes, &outputlen, &(this->point), SECP256K1_EC_UNCOMPRESSED));
     valtype fullbytes_val = WizData::charArrayToValtype(fullbytes, 65);
+    return fullbytes_val;
+}
+
+valtype Point::ybytes() {
+    valtype fullbytes_val = this->fullbytes();
     valtype ybytes_val;
     ybytes_val.insert(ybytes_val.begin(), fullbytes_val.begin() + 33, fullbytes_val.end());
     return ybytes_val;
+}
+
+bool Point::has_even_y() {
+    return (uint256_t(std::string("0x" + WizData::valtypeToHexString(this->ybytes())).data()) % 2 == 0);
 }

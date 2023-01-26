@@ -95,10 +95,8 @@ KeygenCtx key_agg(secp256k1_context* context, std::vector<valtype> pubkeys) {
             agg_key = new_aggkey;
         }
     }
-    
     return KeygenCtx(Point(agg_key), uint256_t(1), uint256_t(0));
 }
-
 
 int main(void) {
     unsigned char randomize[32];
@@ -125,6 +123,8 @@ int main(void) {
     std::cout << "agg xbytes: " << WizData::valtypeToHexString(ehe.Q.xbytes())  << std::endl;
     std::cout << "agg cbytes: " << WizData::valtypeToHexString(ehe.Q.cbytes())  << std::endl;
     std::cout << "agg ybytes: " << WizData::valtypeToHexString(ehe.Q.ybytes())  << std::endl;
-
+    std::cout << "agg fullbytes: " << WizData::valtypeToHexString(ehe.Q.fullbytes())  << std::endl;
+    std::cout << "agg has even y: " << ehe.Q.has_even_y() << std::endl;
+    
     return 0;
 }

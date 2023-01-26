@@ -35,6 +35,7 @@ public:
     Point(point_t point_t);
     valtype xbytes();
     valtype ybytes();
+    valtype fullbytes();
     valtype cbytes();
     valtype cbytes_ext();
     bool has_even_y();
