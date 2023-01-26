@@ -1,12 +1,11 @@
 //
-//  musig2.cpp
+//  point.cpp
 //  musig2
 //
 //  Created by Burak on 26.01.2023.
 //
 
-#include "musig2.h"
-#include <sstream>
+#include "point.h"
 
 Point::Point(point_t point_t) {
     unsigned char randomize[32];

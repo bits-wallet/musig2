@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
-#include "musig2.h"
+#include "keygen_ctx.h"
 
 valtype hash_keys(secp256k1_context* context, std::vector<valtype> pubkeys){
     unsigned char hash32[32];

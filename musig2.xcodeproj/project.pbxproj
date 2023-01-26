@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		670D33E32982B55D00ABA5B2 /* musig2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 670D33E12982B55D00ABA5B2 /* musig2.cpp */; };
+		670D33E62982F3AC00ABA5B2 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 670D33E42982F3AC00ABA5B2 /* point.cpp */; };
+		670D34302982F51200ABA5B2 /* keygen_ctx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 670D342E2982F51200ABA5B2 /* keygen_ctx.cpp */; };
 		675A79D5297FFEB900148565 /* wizdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675A79D4297FFEB900148565 /* wizdata.cpp */; };
 		67DADD5F297F04F40099BE08 /* hmac_sha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD39297F04F40099BE08 /* hmac_sha256.cpp */; };
 		67DADD60297F04F40099BE08 /* sha512.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67DADD3C297F04F40099BE08 /* sha512.cpp */; };
@@ -58,8 +59,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		670D33E12982B55D00ABA5B2 /* musig2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = musig2.cpp; sourceTree = "<group>"; };
-		670D33E22982B55D00ABA5B2 /* musig2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = musig2.h; sourceTree = "<group>"; };
+		670D33E42982F3AC00ABA5B2 /* point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
+		670D33E52982F3AC00ABA5B2 /* point.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = point.h; sourceTree = "<group>"; };
+		670D342E2982F51200ABA5B2 /* keygen_ctx.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = keygen_ctx.cpp; sourceTree = "<group>"; };
+		670D342F2982F51200ABA5B2 /* keygen_ctx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keygen_ctx.h; sourceTree = "<group>"; };
 		675A79D3297FFEB900148565 /* wizdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wizdata.h; sourceTree = "<group>"; };
 		675A79D4297FFEB900148565 /* wizdata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wizdata.cpp; sourceTree = "<group>"; };
 		67636FC629816B660018A144 /* uintwide_t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uintwide_t.h; sourceTree = "<group>"; };
@@ -162,8 +165,10 @@
 				67DADD58297F04F40099BE08 /* uint256.h */,
 				67DADD59297F04F40099BE08 /* uint256.cpp */,
 				67636FC629816B660018A144 /* uintwide_t.h */,
-				670D33E12982B55D00ABA5B2 /* musig2.cpp */,
-				670D33E22982B55D00ABA5B2 /* musig2.h */,
+				670D33E42982F3AC00ABA5B2 /* point.cpp */,
+				670D33E52982F3AC00ABA5B2 /* point.h */,
+				670D342E2982F51200ABA5B2 /* keygen_ctx.cpp */,
+				670D342F2982F51200ABA5B2 /* keygen_ctx.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -287,10 +292,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				670D34302982F51200ABA5B2 /* keygen_ctx.cpp in Sources */,
 				67DADD62297F04F40099BE08 /* sha256.cpp in Sources */,
 				67DADD6A297F04F40099BE08 /* uint256.cpp in Sources */,
-				670D33E32982B55D00ABA5B2 /* musig2.cpp in Sources */,
 				67DADD65297F04F40099BE08 /* muhash.cpp in Sources */,
+				670D33E62982F3AC00ABA5B2 /* point.cpp in Sources */,
 				675A79D5297FFEB900148565 /* wizdata.cpp in Sources */,
 				67DADD5F297F04F40099BE08 /* hmac_sha256.cpp in Sources */,
 				67DADD6C297F04F40099BE08 /* main.cpp in Sources */,
