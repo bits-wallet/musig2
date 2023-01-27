@@ -123,8 +123,15 @@ int main(void) {
     std::cout << "agg xbytes: " << WizData::valtypeToHexString(ehe.Q.xbytes())  << std::endl;
     std::cout << "agg cbytes: " << WizData::valtypeToHexString(ehe.Q.cbytes())  << std::endl;
     std::cout << "agg ybytes: " << WizData::valtypeToHexString(ehe.Q.ybytes())  << std::endl;
-    std::cout << "agg fullbytes: " << WizData::valtypeToHexString(ehe.Q.fullbytes())  << std::endl;
+    std::cout << "agg fullbytes: " << WizData::valtypeToHexString(ehe.Q.ubytes())  << std::endl;
     std::cout << "agg has even y: " << ehe.Q.has_even_y() << std::endl;
+    
+    uint256_t baba = "0x90539eede565f5d054f32cc0c220126889ed1e5d193baf15aef344fe59d4610c";
+
+    uint512_t zaza2 = uint512_t(baba) * 2;
+
+
+    std::cout << zaza2 << std::endl;
     
     return 0;
 }

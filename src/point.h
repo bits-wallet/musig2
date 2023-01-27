@@ -26,19 +26,22 @@ typedef secp256k1_context context_t;
 typedef secp256k1_pubkey point_t;
 
 class Point {
-private:
-    // secp256k1 context
-    context_t *context;
-    // secp256k1 point
-    point_t point;
 public:
-    Point(point_t point_t);
+    static uint256_t ec_scalar_add(uint256_t scalar1, uint256_t scalar2);
+    static uint256_t ec_scalar_mul(uint256_t scalar1, uint256_t scalar2);
+    static Point ec_point_add(Point point1, Point point2);
+    static Point ec_point_mul(Point point, uint256_t scalar);
+public:
+    Point(point_t point_t): point(point_t) {};
     valtype xbytes();
     valtype ybytes();
-    valtype fullbytes();
     valtype cbytes();
+    valtype ubytes();
     valtype cbytes_ext();
     bool has_even_y();
+private:
+    // secp256k1 point
+    point_t point;
 };
 
 #endif /* point_h */
