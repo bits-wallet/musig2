@@ -13,7 +13,7 @@ uint256_t curve_field = std::string("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 // secp256k1 curve order
 uint256_t curve_order = std::string("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141").data();
 
-secp256k1_context* create_context(){
+context_t* Point::create_context(){
     unsigned char randomize[32];
     int return_val;
     secp256k1_context* ctx = secp256k1_context_create(SECP256K1_CONTEXT_NONE);

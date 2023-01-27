@@ -31,6 +31,7 @@ public:
     static uint256_t ec_scalar_mul(uint256_t scalar1, uint256_t scalar2);
     static Point ec_point_add(Point point1, Point point2);
     static Point ec_point_mul(Point point, uint256_t scalar);
+    static context_t* create_context();
 public:
     Point(point_t point_t): point(point_t) {};
     valtype xbytes();
