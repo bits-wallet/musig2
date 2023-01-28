@@ -7,11 +7,8 @@
 
 #include "point.h"
 
-// secp256k1 curve field
-uint256_t curve_field = std::string("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F").data();
-
-// secp256k1 curve order
-uint256_t curve_order = std::string("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141").data();
+uint256_t Point::curve_field = std::string("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F").data();
+uint256_t Point::curve_order = std::string("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141").data();
 
 context_t* Point::create_context(){
     unsigned char randomize[32];

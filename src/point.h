@@ -27,6 +27,10 @@ typedef secp256k1_pubkey point_t;
 
 class Point {
 public:
+    // secp256k1 curve field
+    static uint256_t curve_field;
+    // secp256k1 curve order
+    static uint256_t curve_order;
     static uint256_t ec_scalar_add(uint256_t scalar1, uint256_t scalar2);
     static uint256_t ec_scalar_mul(uint256_t scalar1, uint256_t scalar2);
     static Point ec_point_add(Point point1, Point point2);
@@ -40,6 +44,7 @@ public:
     valtype ubytes();
     valtype cbytes_ext();
     bool has_even_y();
+    point_t returnKey() { return this->point; };
 private:
     // secp256k1 point
     point_t point;
