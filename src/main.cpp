@@ -171,19 +171,19 @@ int main(void) {
     pubkeys.push_back(pubkey3);
     pubkeys.push_back(pubkey1);
     
-    KeygenCtx ehe = key_agg(pubkeys);
+    KeygenCtx ctx1 = key_agg(pubkeys);
     
-    std::cout << "agg xbytes: " << WizData::valtypeToHexString(ehe.Q.xbytes())  << std::endl;
-    std::cout << "agg cbytes: " << WizData::valtypeToHexString(ehe.Q.cbytes())  << std::endl;
-    std::cout << "agg ybytes: " << WizData::valtypeToHexString(ehe.Q.ybytes())  << std::endl;
-    std::cout << "agg fullbytes: " << WizData::valtypeToHexString(ehe.Q.ubytes())  << std::endl;
-    std::cout << "agg has even y: " << ehe.Q.has_even_y() << std::endl;
+    std::cout << "agg xbytes: " << WizData::valtypeToHexString(ctx1.Q.xbytes())  << std::endl;
+    std::cout << "agg cbytes: " << WizData::valtypeToHexString(ctx1.Q.cbytes())  << std::endl;
+    std::cout << "agg ybytes: " << WizData::valtypeToHexString(ctx1.Q.ybytes())  << std::endl;
+    std::cout << "agg fullbytes: " << WizData::valtypeToHexString(ctx1.Q.ubytes())  << std::endl;
+    std::cout << "agg has even y: " << ctx1.Q.has_even_y() << std::endl;
     
-    KeygenCtx ehe2 = apply_tweak(ehe, WizData::hexStringToValtype("E8F791FF9225A2AF0102AFFF4A9A723D9612A682A25EBE79802B263CDFCD83BB"), true);
+    KeygenCtx ctx2 = apply_tweak(ctx1, WizData::hexStringToValtype("E8F791FF9225A2AF0102AFFF4A9A723D9612A682A25EBE79802B263CDFCD83BB"), false);
     
-    std::cout << "tweaked: " << WizData::valtypeToHexString(ehe2.Q.ubytes()) << std::endl;
-    std::cout << "gacc: " << ehe2.gacc << std::endl;
-    std::cout << "tacc: " << ehe2.tacc << std::endl;
+    std::cout << "tweaked: " << WizData::valtypeToHexString(ctx2.Q.ubytes()) << std::endl;
+    std::cout << "gacc: " << ctx2.gacc << std::endl;
+    std::cout << "tacc: " << ctx2.tacc << std::endl;
 
     
     return 0;
